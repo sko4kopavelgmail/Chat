@@ -116,4 +116,13 @@ public class Connect {
         return id;
     }
 
+    public void detele(String userName){
+        int userId = getUserByUserName(userName);
+        String query = "delete from node where node.User_idUser = " + userId;
+        try {
+            stmt.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

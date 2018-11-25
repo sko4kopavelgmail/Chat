@@ -176,12 +176,20 @@ public class Client extends JFrame {
         JMenu history = new JMenu("История");
         // Пункт меню "Открыть" с изображением
         JMenuItem open = new JMenuItem("Предоставить историю переписки");
+        JMenuItem delete = new JMenuItem("Удалить историю переписки");
         history.add(open);
+        history.add(delete);
         open.addActionListener(l->{
             String from = JOptionPane.showInputDialog(this," с какого периода вы хотите полчить историю? HH:MM:SS");
             if (!jtfName.getText().isEmpty())
                 jtaTextAreaMessage.append("История переписки пользователя " +
                         jtfName.getText()+ "\n" +connect.getStory(from,jtfName.getText()));
+            else
+                jtaTextAreaMessage.append("Вы не ввели имя\n");
+        });
+        delete.addActionListener(l->{
+            if (!jtfName.getText().isEmpty())
+                connect.detele(jtfName.getText());
             else
                 jtaTextAreaMessage.append("Вы не ввели имя\n");
         });
