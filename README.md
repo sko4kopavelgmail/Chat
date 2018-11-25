@@ -1,5 +1,5 @@
 # Chat
-A simple chat with MySQL database
+A simple chat with MySQL database.
 You can create your DB with this script:
 
 -- -----------------------------------------------------

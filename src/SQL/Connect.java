@@ -23,7 +23,7 @@ public class Connect {
         }
     }
 
-    public void saveMessage(String userName, String message, String date){
+    public void saveMessage(String userName, String message){
         if (!isUserExists(userName))
             addUser(userName);
         addMessage(message);
@@ -116,7 +116,7 @@ public class Connect {
         return id;
     }
 
-    public void detele(String userName){
+    public void delete(String userName){
         int userId = getUserByUserName(userName);
         String query = "delete from node where node.User_idUser = " + userId;
         try {

@@ -189,7 +189,7 @@ public class Client extends JFrame {
         });
         delete.addActionListener(l->{
             if (!jtfName.getText().isEmpty())
-                connect.detele(jtfName.getText());
+                connect.delete(jtfName.getText());
             else
                 jtaTextAreaMessage.append("Вы не ввели имя\n");
         });
@@ -202,7 +202,7 @@ public class Client extends JFrame {
 
         String messageStr = jtfName.getText() + " (" + df.format(new Date()) + ") : " + jtfMessage.getText();
         //сохраняем сообщение в базе
-        connect.saveMessage(jtfName.getText(),jtfMessage.getText(),df.format(new Date()));
+        connect.saveMessage(jtfName.getText(),jtfMessage.getText());
         // отправляем сообщение
         outMessage.println(messageStr);
         outMessage.flush();
@@ -212,6 +212,7 @@ public class Client extends JFrame {
     private void sendFile(String filename) throws IOException{
         String messageStr = jtfName.getText()+" sent a file " +
                 filename + "  >>  [" + readFile(filename) + "]";
+        connect.saveMessage(jtfName.getText(),readFile(filename));
         outMessage.println(messageStr);
         outMessage.flush();
         jtfMessage.setText("");
